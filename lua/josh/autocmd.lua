@@ -1,7 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
-local yank_group = augroup("yank", { clear = true })
+local yank_group = augroup("yank", {})
 autocmd("TextYankPost", {
 	group = yank_group,
 	pattern = "*",
@@ -14,8 +14,7 @@ autocmd("TextYankPost", {
 	desc = "Highlight yanked text.",
 })
 
-local lsp_group = augroup("lsp", { clear = true })
-
+local lsp_group = augroup("lsp", {})
 autocmd("FileType", {
 	group = lsp_group,
 	pattern = { "nix", "lua" },
@@ -69,12 +68,12 @@ autocmd("LspAttach", {
 			vim.lsp.buf.signature_help()
 		end, opts({ desc = "Show signature help." }))
 
-		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_prev()
-		end, opts({ desc = "Go to previous diagnostic." }))
-
-		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_next()
-		end, opts({ desc = "Go to next diagnostic." }))
+		-- vim.keymap.set("n", "[d", function()
+		-- 	vim.diagnostic.goto_prev()
+		-- end, opts({ desc = "Go to previous diagnostic." }))
+		--
+		-- vim.keymap.set("n", "]d", function()
+		-- 	vim.diagnostic.goto_next()
+		-- end, opts({ desc = "Go to next diagnostic." }))
 	end,
 })

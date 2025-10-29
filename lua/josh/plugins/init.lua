@@ -1,0 +1,21 @@
+vim.iter({
+	"carbonfox",
+	"cellular-automaton-nvim",
+	"mini-diff",
+	"mini-git",
+	"mini-statusline",
+	"mini-notify",
+	"mini-icons",
+	"mini-surround",
+	"mini-snippets",
+	"mini-pairs",
+	"mini-pick",
+	"mini-clue",
+	"nvim-cmp",
+	"lsp",
+	"conform-nvim",
+	"neogit",
+	"nvim-treesitter",
+}):each(function(plug)
+	require("josh.plugins." .. plug)
+end)
