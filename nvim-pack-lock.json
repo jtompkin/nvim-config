@@ -60,6 +60,10 @@
       "rev": "fbb93ea",
       "src": "https://github.com/nvim-mini/mini.diff"
     },
+    "mini.files": {
+      "rev": "dce9a4e",
+      "src": "https://github.com/nvim-mini/mini.files"
+    },
     "mini.icons": {
       "rev": "ff2e4f1",
       "src": "https://github.com/nvim-mini/mini.icons"
