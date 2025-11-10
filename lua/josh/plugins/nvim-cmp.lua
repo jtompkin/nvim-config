@@ -52,14 +52,17 @@ Lib.pack_add_on_event(
 				{ name = "buffer" },
 			}),
 		})
+		local cmdline_mapping = cmp.mapping.preset.cmdline()
+		cmdline_mapping["<C-j>"] = cmdline_mapping["<Tab>"]
+		cmdline_mapping["<C-k>"] = cmdline_mapping["<S-Tab>"]
 		cmp.setup.cmdline({ "/", "?" }, {
-			mapping = cmp.mapping.preset.cmdline(),
+			mapping = cmdline_mapping,
 			sources = {
 				{ name = "buffer" },
 			},
 		})
 		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
+			mapping = cmdline_mapping,
 			sources = cmp.config.sources({
 				{ name = "path" },
 			}, {
