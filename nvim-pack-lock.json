@@ -37,7 +37,7 @@
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "d7b5feb",
+      "rev": "b1d9a91",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -49,7 +49,7 @@
       "src": "https://github.com/nvim-mini/mini-git"
     },
     "mini.clue": {
-      "rev": "e806253",
+      "rev": "98716f2",
       "src": "https://github.com/nvim-mini/mini.clue"
     },
     "mini.completion": {
@@ -105,7 +105,7 @@
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "neogit": {
-      "rev": "d2a2ae44",
+      "rev": "2cc5daff",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nightfox.nvim": {
@@ -121,7 +121,7 @@
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "5eca61b3",
+      "rev": "81aec1e4",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
