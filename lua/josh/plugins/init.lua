@@ -1,6 +1,7 @@
 vim.iter({
 	"carbonfox",
 	"cellular-automaton-nvim",
+	"mini-starter",
 	"mini-diff",
 	"mini-git",
 	"mini-statusline",

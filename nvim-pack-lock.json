@@ -92,6 +92,10 @@
       "rev": "66c041f",
       "src": "https://github.com/nvim-mini/mini.snippets"
     },
+    "mini.starter": {
+      "rev": "8ee6ce6",
+      "src": "https://github.com/nvim-mini/mini.starter"
+    },
     "mini.statusline": {
       "rev": "1491990",
       "src": "https://github.com/nvim-mini/mini.statusline"
