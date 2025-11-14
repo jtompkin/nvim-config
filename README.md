@@ -4,10 +4,23 @@ Just your run-of-the-mill overcomplicated Neovim config. This config requires Ne
 
 ## Usage
 
-Clone it into `~/.config/nvim` or wherever else you freaks keep your configs.
+Clone this repo into `~/.config/nvim` or wherever else you freaks keep your configs:
 
 ```bash
 git clone https://github.com/jtompkin/nvim-config ~/.config/nvim
 ```
 
-If you are on Windows, keep in mind that many plugins expect a C compiler and othe Linux tools to be present. [MSYS2](https://www.msys2.org/) is a good option.
+Or extract it into your config folder if your dotfiles are part of a larger repo:
+
+```bash
+mkdir -p ~/.config/nvim
+curl -L https://github.com/jtompkin/nvim-config/archive/refs/heads/main.tar.gz | tar xz --strip-components 1 -C ~/.config/nvim
+```
+
+If you are on Windows, keep in mind that many plugins expect a C compiler and general Linux tools to be present, which can be annoying to get because Windows. [MSYS2](https://www.msys2.org/) is a good option.
+
+## External tools
+
+Some external tools are needed for all plugins to work.
+- C compiler - for several plugins probably
+- [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) - for [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/tree/main) (main branch)
