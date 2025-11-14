@@ -53,11 +53,11 @@ Lib.pack_add_on_event(
 			},
 		})
 		require("mason-lspconfig").setup({
-			ensure_installed = { "lua_ls", "pyright", "gopls" },
+			ensure_installed = { "lua_ls" },
 			automatic_enable = {
 				exclude = { "stylua" },
 			},
 		})
 	end,
-	{ pattern = { "lua", "python", "go", "gomod", "gowork", "gotmpl" } }
+	{ pattern = { "lua", "python", "go", "gomod", "gowork", "gotmpl", "ps1" } }
 )
