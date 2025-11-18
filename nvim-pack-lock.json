@@ -17,7 +17,7 @@
       "src": "https://github.com/abeldekat/cmp-mini-snippets"
     },
     "cmp-nvim-lsp": {
-      "rev": "bd5a7d6",
+      "rev": "cbc7b02",
       "src": "https://github.com/hrsh7th/cmp-nvim-lsp"
     },
     "cmp-path": {
@@ -25,7 +25,7 @@
       "src": "https://github.com/hrsh7th/cmp-path"
     },
     "conform.nvim": {
-      "rev": "cde4da5",
+      "rev": "1bf8b5b",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "friendly-snippets": {
@@ -33,7 +33,7 @@
       "src": "https://github.com/rafamadriz/friendly-snippets"
     },
     "mason": {
-      "rev": "ad7146a",
+      "rev": "57e5a8a",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mason-lspconfig.nvim": {
@@ -41,7 +41,7 @@
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
-      "rev": "ad7146a",
+      "rev": "57e5a8a",
       "src": "https://github.com/mason-org/mason.nvim"
     },
     "mini-git": {
@@ -49,11 +49,11 @@
       "src": "https://github.com/nvim-mini/mini-git"
     },
     "mini.clue": {
-      "rev": "98716f2",
+      "rev": "015320e",
       "src": "https://github.com/nvim-mini/mini.clue"
     },
     "mini.completion": {
-      "rev": "581934b",
+      "rev": "7c5edfc",
       "src": "https://github.com/nvim-mini/mini.completion"
     },
     "mini.diff": {
@@ -61,7 +61,7 @@
       "src": "https://github.com/nvim-mini/mini.diff"
     },
     "mini.files": {
-      "rev": "dce9a4e",
+      "rev": "26baa62",
       "src": "https://github.com/nvim-mini/mini.files"
     },
     "mini.icons": {
@@ -73,7 +73,7 @@
       "src": "https://github.com/nvim-mini/mini.jump"
     },
     "mini.notify": {
-      "rev": "895630b",
+      "rev": "135dcfd",
       "src": "https://github.com/nvim-mini/mini.notify"
     },
     "mini.pairs": {
@@ -81,7 +81,7 @@
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.pick": {
-      "rev": "08a7220",
+      "rev": "b435139",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "mini.sessions": {
@@ -89,7 +89,7 @@
       "src": "https://github.com/nvim-mini/mini.sessions"
     },
     "mini.snippets": {
-      "rev": "66c041f",
+      "rev": "b4065ca",
       "src": "https://github.com/nvim-mini/mini.snippets"
     },
     "mini.starter": {
@@ -105,7 +105,7 @@
       "src": "https://github.com/nvim-mini/mini.surround"
     },
     "neogit": {
-      "rev": "2cc5daff",
+      "rev": "4ba620ad",
       "src": "https://github.com/NeogitOrg/neogit"
     },
     "nightfox.nvim": {
@@ -113,15 +113,15 @@
       "src": "https://github.com/EdenEast/nightfox.nvim"
     },
     "nvim-cmp": {
-      "rev": "106c4bc",
+      "rev": "d97d85e",
       "src": "https://github.com/hrsh7th/nvim-cmp"
     },
     "nvim-lspconfig": {
-      "rev": "2010fc6",
+      "rev": "d4f77e7",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "81aec1e4",
+      "rev": "c682a239",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
