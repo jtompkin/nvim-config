@@ -64,16 +64,8 @@ autocmd("LspAttach", {
 			vim.lsp.buf.rename()
 		end, opts({ desc = "Rename object in scope." }))
 
-		vim.keymap.set({ "n", "i" }, "<C-h>", function()
+		vim.keymap.set({ "n", "i" }, "<C-g>", function()
 			vim.lsp.buf.signature_help()
 		end, opts({ desc = "Show signature help." }))
-
-		-- vim.keymap.set("n", "[d", function()
-		-- 	vim.diagnostic.goto_prev()
-		-- end, opts({ desc = "Go to previous diagnostic." }))
-		--
-		-- vim.keymap.set("n", "]d", function()
-		-- 	vim.diagnostic.goto_next()
-		-- end, opts({ desc = "Go to next diagnostic." }))
 	end,
 })

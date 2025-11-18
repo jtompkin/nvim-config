@@ -1,4 +1,3 @@
--- This plugin is lazy-loaded
 -- Optional: load nvim-cmp before this plugin for capabilities
 vim.pack.add(vim.iter({
 	"neovim/nvim-lspconfig",
