@@ -1,13 +1,14 @@
 vim.iter({
+	"nvim-treesitter",
 	"carbonfox",
 	"cellular-automaton-nvim",
+	"mini-icons",
 	"mini-starter",
 	"mini-diff",
 	"mini-git",
 	"mini-statusline",
 	"mini-notify",
 	"mini-sessions",
-	"mini-icons",
 	"mini-jump",
 	"mini-surround",
 	"mini-snippets",
@@ -16,10 +17,11 @@ vim.iter({
 	"mini-clue",
 	"nvim-cmp",
 	"mini-files",
+	"render-markdown",
+	"markdown-preview",
 	"lsp",
 	"conform-nvim",
 	"neogit",
-	"nvim-treesitter",
 }):each(function(plug)
 	require("josh.plugins." .. plug)
 end)
