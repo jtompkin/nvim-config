@@ -36,7 +36,7 @@ local default_langs = {
 }
 require("nvim-treesitter").install(default_langs):wait(300000)
 autocmd("FileType", {
-	pattern = default_langs,
+	pattern = vim.list_extend({ "ps1" }, default_langs),
 	callback = function()
 		vim.treesitter.start()
 		vim.wo.foldexpr = "v:lua.vim.treesitter.foldexpr()"

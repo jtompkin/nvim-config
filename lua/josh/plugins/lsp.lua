@@ -7,12 +7,6 @@ vim.pack.add(vim.iter({
 	:map(Lib.from_gh)
 	:totable())
 require("mason").setup({})
-local ok, capabilities = pcall(function()
-	return require("cmp_nvim_lsp").default_capabilities()
-end)
-if ok then
-	vim.lsp.config("*", { capabilities = capabilities })
-end
 vim.lsp.config("lua_ls", {
 	on_init = function(client)
 		if client.workspace_folders then
@@ -46,6 +40,28 @@ vim.lsp.config("lua_ls", {
 		Lua = {},
 	},
 })
+vim.lsp.config("powershell_es", {
+	on_attach = function(client)
+		client.server_capabilities.semanticTokensProvider = nil
+	end,
+	settings = {
+		powershell = {
+			codeFormatting = {
+				preset = "OTBS",
+				whitespaceBeforeOpenBrace = true,
+				whitespaceAroundOperator = true,
+				whitespaceAroundPipe = true,
+				trimWhitespaceAroundPipe = true,
+			},
+		},
+	},
+})
+local ok, capabilities = pcall(function()
+	return require("cmp_nvim_lsp").default_capabilities()
+end)
+if ok then
+	vim.lsp.config("*", { capabilities = capabilities })
+end
 require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls" },
 	automatic_enable = {
