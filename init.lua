@@ -1,1 +1,3 @@
-require("josh")
+if not vim.g.vscode then
+	require("josh")
+end

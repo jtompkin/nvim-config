@@ -1,4 +1,4 @@
-vim.iter({
+for _, plug in ipairs({
 	"nvim-treesitter",
 	"carbonfox",
 	"cellular-automaton-nvim",
@@ -20,8 +20,9 @@ vim.iter({
 	"render-markdown",
 	"markdown-preview",
 	"lsp",
+	"lazydev",
 	"conform-nvim",
 	"neogit",
-}):each(function(plug)
+}) do
 	require("josh.plugins." .. plug)
-end)
+end

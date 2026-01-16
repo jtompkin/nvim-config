@@ -48,6 +48,7 @@ Lib.pack_add_on_event(
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "mini_snippets" },
+				{ name = "lazydev", group_index = 0 },
 			}, {
 				{ name = "buffer" },
 			}),
