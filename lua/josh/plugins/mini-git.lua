@@ -1,2 +1,2 @@
 vim.pack.add({ Lib.from_gh("nvim-mini/mini-git") })
-require("mini.git").setup({})
+require("mini.git").setup()

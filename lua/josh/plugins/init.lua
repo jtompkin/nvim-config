@@ -2,6 +2,7 @@ for _, plug in ipairs({
 	"nvim-treesitter",
 	"carbonfox",
 	"cellular-automaton-nvim",
+	"mini-misc",
 	"mini-icons",
 	"mini-starter",
 	"mini-diff",

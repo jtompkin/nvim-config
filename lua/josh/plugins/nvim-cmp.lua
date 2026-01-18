@@ -15,7 +15,7 @@ Lib.pack_add_on_event(
 	function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").load()
 		require("luasnip.loaders.from_snipmate").lazy_load()
 		require("luasnip.loaders.from_lua").lazy_load()
 		luasnip.filetype_extend("lua", { "luadoc" })
@@ -69,7 +69,6 @@ Lib.pack_add_on_event(
 						fallback()
 					end
 				end),
-				-- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },

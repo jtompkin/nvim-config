@@ -1,5 +1,5 @@
 vim.pack.add({ Lib.from_gh("nvim-mini/mini.files") })
-require("mini.files").setup({})
+require("mini.files").setup()
 vim.keymap.set("n", "<leader>pV", MiniFiles.open, { desc = "Return to file exporer" })
 vim.keymap.set("n", "<leader>pv", function()
 	MiniFiles.open(vim.api.nvim_buf_get_name(0), false)
