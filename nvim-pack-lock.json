@@ -1,7 +1,7 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "3732756842a2f7e0e76a7b0487e9692072857277",
+      "rev": "5866f425849e4a1dc0b005550b1b657d1240bab4",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "cellular-automaton.nvim": {
@@ -29,7 +29,7 @@
       "src": "https://github.com/saadparwaiz1/cmp_luasnip"
     },
     "conform.nvim": {
-      "rev": "5ac2bb57a9096f00ca50e1a3c46020d5930319b8",
+      "rev": "c2526f1cde528a66e086ab1668e996d162c75f4f",
       "src": "https://github.com/stevearc/conform.nvim"
     },
     "friendly-snippets": {

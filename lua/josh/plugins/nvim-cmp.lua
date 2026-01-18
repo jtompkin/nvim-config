@@ -15,17 +15,17 @@ Lib.pack_add_on_event(
 	function()
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
-		require("luasnip.loaders.from_vscode").load()
+		luasnip.filetype_extend("lua", { "luadoc" })
+		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip.loaders.from_snipmate").lazy_load()
 		require("luasnip.loaders.from_lua").lazy_load()
-		luasnip.filetype_extend("lua", { "luadoc" })
 		cmp.setup({
 			enabled = function()
 				local disabled = false
 				disabled = disabled or (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt")
 				disabled = disabled or (vim.fn.reg_recording() ~= "")
 				disabled = disabled or (vim.fn.reg_executing() ~= "")
-				disabled = disabled or require("cmp.config.context").in_treesitter_capture("comment")
+				-- disabled = disabled or require("cmp.config.context").in_treesitter_capture("comment")
 				return not disabled
 			end,
 			snippet = {
