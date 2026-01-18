@@ -11,7 +11,6 @@ for _, plug in ipairs({
 	"mini-sessions",
 	"mini-jump",
 	"mini-surround",
-	"mini-snippets",
 	"mini-pairs",
 	"mini-pick",
 	"mini-clue",

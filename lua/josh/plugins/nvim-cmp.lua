@@ -2,19 +2,23 @@
 -- Load mini.snippets before this plugin
 Lib.pack_add_on_event(
 	{ "InsertEnter", "CmdlineEnter" },
-	vim.iter({
+	vim.tbl_map(Lib.from_gh, {
 		"hrsh7th/nvim-cmp",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
-		"abeldekat/cmp-mini-snippets",
-	})
-		:map(Lib.from_gh)
-		:totable(),
+		"L3MON4D3/LuaSnip",
+		"saadparwaiz1/cmp_luasnip",
+		"rafamadriz/friendly-snippets",
+	}),
 	function()
 		local cmp = require("cmp")
-		local mini_snippets = require("mini.snippets")
+		local luasnip = require("luasnip")
+		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_snipmate").lazy_load()
+		require("luasnip.loaders.from_lua").lazy_load()
+		luasnip.filetype_extend("lua", { "luadoc" })
 		cmp.setup({
 			enabled = function()
 				local disabled = false
@@ -26,10 +30,7 @@ Lib.pack_add_on_event(
 			end,
 			snippet = {
 				expand = function(args)
-					local insert = mini_snippets.config.expand.insert or mini_snippets.default_insert
-					insert({ body = args.body })
-					cmp.resubscribe({ "TextChangedI", "TextChangedP" })
-					require("cmp.config").set_onetime({ sources = {} })
+					luasnip.lsp_expand(args.body)
 				end,
 			},
 			window = {
@@ -37,17 +38,42 @@ Lib.pack_add_on_event(
 				documentation = cmp.config.window.bordered(),
 			},
 			mapping = cmp.mapping.preset.insert({
+				["<C-l>"] = cmp.mapping(function(fallback)
+					if luasnip.locally_jumpable(1) then
+						luasnip.jump(1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
+				["<C-h>"] = cmp.mapping(function(fallback)
+					if luasnip.locally_jumpable(-1) then
+						luasnip.jump(-1)
+					else
+						fallback()
+					end
+				end, { "i", "s" }),
 				["<C-j>"] = cmp.mapping.select_next_item(),
 				["<C-k>"] = cmp.mapping.select_prev_item(),
 				["<C-b>"] = cmp.mapping.scroll_docs(-4),
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-y>"] = cmp.mapping(function(fallback)
+					if cmp.visible() then
+						if luasnip.expandable() then
+							luasnip.expand()
+						else
+							cmp.confirm({ select = true })
+						end
+					else
+						fallback()
+					end
+				end),
+				-- ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			}),
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
-				{ name = "mini_snippets" },
+				{ name = "luasnip" },
 				{ name = "lazydev", group_index = 0 },
 			}, {
 				{ name = "buffer" },
