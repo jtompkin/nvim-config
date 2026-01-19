@@ -13,7 +13,7 @@ local function packs_to_window(packs) ---@param packs string[]
 	end
 	local buf = vim.api.nvim_create_buf(false, true)
 	vim.api.nvim_buf_set_lines(buf, 0, -1, false, packs)
-	vim.api.nvim_buf_set_keymap(buf, "n", "q", "<CMD>q<CR>", {})
+	vim.keymap.set("n", "q", vim.cmd.q, { buffer = buf })
 	local win = vim.api.nvim_open_win(
 		buf,
 		true,
