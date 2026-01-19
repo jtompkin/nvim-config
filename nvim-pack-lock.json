@@ -1,7 +1,7 @@
 {
   "plugins": {
     "LuaSnip": {
-      "rev": "5866f425849e4a1dc0b005550b1b657d1240bab4",
+      "rev": "dae4f5aaa3574bd0c2b9dd20fb9542a02c10471c",
       "src": "https://github.com/L3MON4D3/LuaSnip"
     },
     "cellular-automaton.nvim": {
@@ -125,7 +125,7 @@
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "d9a5fb8484374e8ed5d88dd9e0475a760c168d6a",
+      "rev": "e75c007f2747050c2c620dc862c77b8f242551a8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },

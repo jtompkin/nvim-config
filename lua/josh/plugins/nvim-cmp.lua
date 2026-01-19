@@ -20,14 +20,6 @@ Lib.pack_add_on_event(
 		require("luasnip.loaders.from_snipmate").lazy_load()
 		require("luasnip.loaders.from_lua").lazy_load()
 		cmp.setup({
-			enabled = function()
-				local disabled = false
-				disabled = disabled or (vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt")
-				disabled = disabled or (vim.fn.reg_recording() ~= "")
-				disabled = disabled or (vim.fn.reg_executing() ~= "")
-				-- disabled = disabled or require("cmp.config.context").in_treesitter_capture("comment")
-				return not disabled
-			end,
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
