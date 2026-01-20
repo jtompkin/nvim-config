@@ -15,7 +15,6 @@ for _, plug in ipairs({
 	"mini-pairs",
 	"mini-pick",
 	"mini-clue",
-	"nvim-cmp",
 	"mini-files",
 	"render-markdown",
 	"markdown-preview",
@@ -23,6 +22,7 @@ for _, plug in ipairs({
 	"lazydev",
 	"conform-nvim",
 	"neogit",
+	"blink-cmp",
 }) do
 	require("josh.plugins." .. plug)
 end

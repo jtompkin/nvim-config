@@ -41,9 +41,7 @@ vim.lsp.config("lua_ls", {
 	},
 })
 vim.lsp.config("powershell_es", {
-	on_attach = function(client)
-		client.server_capabilities.semanticTokensProvider = nil
-	end,
+	on_attach = function(client) client.server_capabilities.semanticTokensProvider = nil end,
 	settings = {
 		powershell = {
 			codeFormatting = {
@@ -56,9 +54,7 @@ vim.lsp.config("powershell_es", {
 		},
 	},
 })
-local ok, capabilities = pcall(function()
-	return require("cmp_nvim_lsp").default_capabilities()
-end)
+local ok, capabilities = pcall(function() return require("cmp_nvim_lsp").default_capabilities() end)
 if ok then
 	vim.lsp.config("*", { capabilities = capabilities })
 end

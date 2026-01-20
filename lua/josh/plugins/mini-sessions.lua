@@ -1,9 +1,12 @@
 vim.pack.add({ Lib.from_gh("nvim-mini/mini.sessions") })
 local mini_sessions = require("mini.sessions")
 mini_sessions.setup()
-vim.keymap.set("n", "<leader>sw", function()
-	mini_sessions.write(mini_sessions.config.file)
-end, { desc = "Write local session" })
+vim.keymap.set(
+	"n",
+	"<leader>sw",
+	function() mini_sessions.write(mini_sessions.config.file) end,
+	{ desc = "Write local session" }
+)
 vim.keymap.set("n", "<leader>sn", function()
 	local session = vim.fn.input("Session name: ")
 	if session ~= "" then

@@ -7,6 +7,5 @@ vim.keymap.set(
 	"<cmd>!chmod +x %<CR>",
 	{ silent = true, desc = "Add execute permissions to current buffer" }
 )
-
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Yank into clipboard" })
 vim.keymap.set("n", "<leader>Y", [["+Y]], { desc = "Yank into clipboard" })

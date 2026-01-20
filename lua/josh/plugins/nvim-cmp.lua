@@ -17,9 +17,7 @@ require("luasnip.loaders.from_snipmate").lazy_load()
 require("luasnip.loaders.from_lua").lazy_load()
 cmp.setup({
 	snippet = {
-		expand = function(args)
-			luasnip.lsp_expand(args.body)
-		end,
+		expand = function(args) luasnip.lsp_expand(args.body) end,
 	},
 	window = {
 		completion = cmp.config.window.bordered(),
