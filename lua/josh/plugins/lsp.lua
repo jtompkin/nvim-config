@@ -1,11 +1,9 @@
 -- Optional: load nvim-cmp before this plugin for capabilities
-vim.pack.add(vim.iter({
+vim.pack.add(vim.tbl_map(function(pack) return Lib.from_gh(pack) end, {
 	"neovim/nvim-lspconfig",
 	"mason-org/mason.nvim",
 	"mason-org/mason-lspconfig.nvim",
-})
-	:map(Lib.from_gh)
-	:totable())
+}))
 require("mason").setup({})
 vim.lsp.config("lua_ls", {
 	on_init = function(client)
@@ -54,10 +52,6 @@ vim.lsp.config("powershell_es", {
 		},
 	},
 })
-local ok, capabilities = pcall(function() return require("cmp_nvim_lsp").default_capabilities() end)
-if ok then
-	vim.lsp.config("*", { capabilities = capabilities })
-end
 require("mason-lspconfig").setup({
 	ensure_installed = { "lua_ls" },
 	automatic_enable = {

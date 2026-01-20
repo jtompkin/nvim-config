@@ -13,6 +13,10 @@ miniclue.setup({
 		{ mode = "n", keys = "g" },
 		{ mode = "x", keys = "g" },
 
+		-- Brackets
+		{ mode = "n", keys = "[" },
+		{ mode = "n", keys = "]" },
+
 		-- Marks
 		{ mode = "n", keys = "'" },
 		{ mode = "n", keys = "`" },
@@ -40,5 +44,6 @@ miniclue.setup({
 		miniclue.gen_clues.registers(),
 		miniclue.gen_clues.windows(),
 		miniclue.gen_clues.z(),
+		miniclue.gen_clues.square_brackets(),
 	},
 })

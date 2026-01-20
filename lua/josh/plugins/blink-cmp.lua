@@ -9,8 +9,8 @@ require("blink.cmp").setup({
 		["<C-k>"] = { "select_prev", "fallback" },
 		["<C-l>"] = { "snippet_forward" },
 		["<C-h>"] = { "snippet_backward" },
-		["<C-e>"] = { "hide", "fallback" },
-		["<C-S-e>"] = { "cancel", "fallback" },
+		["<C-e>"] = { "cancel", "fallback" },
+		["<C-]>"] = { function(cmp) cmp.show({ providers = { "snippets" } }) end },
 		["<C-S-Space>"] = {
 			"show",
 			"show_documentation",
@@ -27,9 +27,14 @@ require("blink.cmp").setup({
 		documentation = { auto_show = true, auto_show_delay_ms = 500 },
 		ghost_text = { enabled = true },
 	},
-	sources = { providers = { snippets = { opts = { extended_filetypes = {
-		lua = { "luadoc" },
-	} } } } },
+	sources = {
+		providers = {
+			snippets = { opts = { extended_filetypes = {
+				lua = { "luadoc" },
+				python = { "pydoc" },
+			} } },
+		},
+	},
 	cmdline = {
 		keymap = { preset = "inherit" },
 		completion = { menu = { auto_show = true } },
