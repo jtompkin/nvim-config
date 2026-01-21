@@ -22,5 +22,7 @@ If you are on Windows, keep in mind that many plugins expect a C compiler and ge
 ## External tools
 
 Some external tools are needed for all plugins to work.
+
 - C compiler - for several plugins probably
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) - for [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/tree/main) (main branch)
+- cargo (nightly) - used to build blink.cmp
