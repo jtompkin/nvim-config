@@ -25,7 +25,7 @@
       "src": "https://github.com/iamcco/markdown-preview.nvim"
     },
     "mason-lspconfig.nvim": {
-      "rev": "80c0130c5f16b551865a69e832f1feadeedb5fbe",
+      "rev": "4823a251e7578a835bb979c37df390fca692ba39",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim"
     },
     "mason.nvim": {
@@ -37,7 +37,7 @@
       "src": "https://github.com/nvim-mini/mini-git"
     },
     "mini.clue": {
-      "rev": "e2f0c1eb3ce652e34b1e9a9c504a780acf3bd4e3",
+      "rev": "2648303d5003cc508c6430937f8dd3a9a9702a28",
       "src": "https://github.com/nvim-mini/mini.clue"
     },
     "mini.diff": {
@@ -69,7 +69,7 @@
       "src": "https://github.com/nvim-mini/mini.pairs"
     },
     "mini.pick": {
-      "rev": "7a781e00aba1af54bd53a1d66d3ca8168a4a0dbb",
+      "rev": "7c0a674f620ddc701903b887b2dade836b23ea79",
       "src": "https://github.com/nvim-mini/mini.pick"
     },
     "mini.sessions": {
@@ -97,11 +97,11 @@
       "src": "https://github.com/EdenEast/nightfox.nvim"
     },
     "nvim-lspconfig": {
-      "rev": "92ee7d42320edfbb81f3cad851314ab197fa324a",
+      "rev": "dec357ee48ff7e2e5b76898fd7c67b61a627d3ac",
       "src": "https://github.com/neovim/nvim-lspconfig"
     },
     "nvim-treesitter": {
-      "rev": "e75c007f2747050c2c620dc862c77b8f242551a8",
+      "rev": "ec034813775d7e2974c7551c8c34499a828963f8",
       "src": "https://github.com/nvim-treesitter/nvim-treesitter",
       "version": "'main'"
     },
