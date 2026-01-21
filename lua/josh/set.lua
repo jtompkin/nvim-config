@@ -46,6 +46,8 @@ vim.o.updatetime = 50
 vim.o.textwidth = 88
 vim.o.colorcolumn = "88"
 
+vim.o.winborder = "single"
+
 vim.o.mouse = "n"
 
 vim.o.spelllang = "en_us"

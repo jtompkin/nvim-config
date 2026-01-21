@@ -38,12 +38,21 @@ local list_dispatcher = { ---@type { [string]: fun(): nil }
 		)
 	end,
 	all = function()
+		local function fallback()
+			packs_to_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()))
+		end
 		if Lib.json then
-			io.input("nvim-pack-lock.json")
-			local pack_lock = Lib.json.decode(io.read("*a"))
+			local f, err = io.open("nvim-pack-lock.json", "r")
+			if not f then
+				vim.notify("Could not open package lockfile:\n" .. err, vim.log.levels.ERROR)
+				fallback()
+				return
+			end
+			local pack_lock = Lib.json.decode(f:read("*a"))
+			f:close()
 			packs_to_window(vim.tbl_keys(pack_lock.plugins or {}))
 		else
-			packs_to_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()))
+			fallback()
 		end
 	end,
 }

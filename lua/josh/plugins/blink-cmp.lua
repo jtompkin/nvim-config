@@ -2,6 +2,7 @@ vim.pack.add({
 	{ src = Lib.from_gh("Saghen/blink.cmp"), version = vim.version.range("~1") },
 	Lib.from_gh("rafamadriz/friendly-snippets"),
 })
+
 require("blink.cmp").setup({
 	keymap = {
 		preset = "default",
