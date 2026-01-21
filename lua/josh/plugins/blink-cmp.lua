@@ -1,9 +1,18 @@
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name, kind = ev.data.spec.name, ev.data.kind
+		if name == "blink.cmp" and (kind == "install" or kind == "update") then
+			vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }):wait()
+		end
+	end,
+})
 vim.pack.add({
-	{ src = Lib.from_gh("Saghen/blink.cmp"), version = vim.version.range("~1") },
+	-- { src = Lib.from_gh("Saghen/blink.cmp"), version = vim.version.range("~1") },
+	Lib.from_gh("Saghen/blink.cmp"),
 	Lib.from_gh("rafamadriz/friendly-snippets"),
 })
-
 require("blink.cmp").setup({
+	fuzzy = { implementation = "rust" },
 	keymap = {
 		preset = "default",
 		["<C-j>"] = { "select_next", "fallback" },
@@ -26,6 +35,7 @@ require("blink.cmp").setup({
 	signature = { enabled = true },
 	completion = {
 		documentation = { auto_show = true, auto_show_delay_ms = 500 },
+		accept = { auto_brackets = { enabled = false } },
 		ghost_text = { enabled = true },
 	},
 	sources = {

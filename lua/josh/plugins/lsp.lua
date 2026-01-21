@@ -52,8 +52,8 @@ vim.lsp.config("powershell_es", {
 		},
 	},
 })
+vim.lsp.enable("lua_ls")
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls" },
 	automatic_enable = {
 		exclude = { "stylua" },
 	},
