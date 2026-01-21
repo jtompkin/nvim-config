@@ -21,6 +21,9 @@ function lib.pack_add_on_event(event, specs, setup, opts)
 	)
 end
 
+---@return boolean is_windows `true` if the current system is Windows
+function lib.is_windows() return vim.uv.os_uname().sysname == "Windows_NT" end
+
 ---@param repo string Owner and repo name separated by "/"
 ---@return string url Full GitHub repo URL
 function lib.from_gh(repo) return "https://github.com/" .. repo end

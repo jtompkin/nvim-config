@@ -2,12 +2,13 @@ vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
 		local name, kind = ev.data.spec.name, ev.data.kind
 		if name == "blink.cmp" and (kind == "install" or kind == "update") then
-			if vim.uv.os_uname().sysname == "Windows_NT" then
+			local is_windows = Lib.is_windows()
+			if is_windows then
 				vim.system({ "rustup", "override", "set", "nightly-x86_64-pc-windows-gnu" }, { cwd = ev.data.path })
 					:wait()
 			end
 			vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }):wait()
-			if vim.uv.os_uname().sysname == "Windows_NT" then
+			if is_windows then
 				vim.system({ "rustup", "override", "unset" }, { cwd = ev.data.path }):wait()
 			end
 		end

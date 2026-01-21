@@ -22,7 +22,7 @@ vim.o.wrap = false
 
 vim.o.swapfile = false
 vim.o.backup = false
-if vim.uv.os_uname().sysname == "Windows_NT" then
+if Lib.is_windows() then
 	vim.o.undodir = vim.uv.os_getenv("USERPROFILE") .. "/.vim/undodir"
 else
 	vim.o.undodir = vim.uv.os_getenv("HOME") .. "/.vim/undodir"
