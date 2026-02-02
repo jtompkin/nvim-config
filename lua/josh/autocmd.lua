@@ -1,6 +1,12 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+autocmd({ "BufRead", "BufNewFile" }, {
+	pattern = "template",
+	command = "set filetype=sh",
+	desc = "Set filetype=sh on void-packages template files",
+})
+
 local yank_group = augroup("yank", {})
 autocmd("TextYankPost", {
 	group = yank_group,
