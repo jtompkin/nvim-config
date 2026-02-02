@@ -47,35 +47,31 @@ end
 local list_dispatcher = { ---@type { [string]: fun(): nil }
 	pretty = function() vim.pack.update(nil, { offline = true }) end,
 	inactive = function()
-		packs_to_window(
-			vim.tbl_map(
-				function(pack) return pack.spec.name end,
-				vim.tbl_filter(function(pack) return not pack.active end, vim.pack.get())
-			)
-		)
+		Lib.pipe(vim.pack.get(), {
+			function(packs)
+				return vim.tbl_filter(function(pack) return not pack.active end, packs)
+			end,
+			function(packs)
+				return vim.tbl_map(function(pack) return pack.spec.name end, packs)
+			end,
+			packs_to_window,
+		})
 	end,
 	all = function()
-		local function fallback()
-			packs_to_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()))
-		end
 		local pack_lock, err = get_packages_fast()
 		if not err then
 			packs_to_window(vim.tbl_keys(pack_lock.plugins))
-		else
-			vim.notify("Could not open package lockfile:\n" .. err, vim.log.levels.ERROR)
-			fallback()
+			return
 		end
+		vim.notify("Could not open package lockfile:\n" .. err, vim.log.levels.ERROR)
+		packs_to_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()))
 	end,
 }
 
 vim.api.nvim_create_user_command(
 	"PackList",
 	function(args) (list_dispatcher[args.fargs[1]] or list_dispatcher.all)() end,
-	{
-		complete = function() return vim.tbl_keys(list_dispatcher) end,
-		nargs = "?",
-		desc = "List installed packages",
-	}
+	{ complete = function() return vim.tbl_keys(list_dispatcher) end, nargs = "?", desc = "List installed packages" }
 )
 
 vim.api.nvim_create_user_command("PackDelete", function(args)
@@ -88,7 +84,7 @@ vim.api.nvim_create_user_command("PackDelete", function(args)
 end, {
 	nargs = "+",
 	complete = function() return vim.list_extend(vim.tbl_keys(get_packages_fast().plugins or {}), { "-f" }) end,
-	desc = "Delete installed packages from disk",
+	desc = "Delete installed packages from disk. -f to force",
 })
 
 vim.api.nvim_create_user_command("PackUpdate", function(args)
@@ -105,5 +101,5 @@ vim.api.nvim_create_user_command("PackUpdate", function(args)
 end, {
 	nargs = "*",
 	complete = function() return vim.list_extend(vim.tbl_keys(get_packages_fast().plugins or {}), { "-l" }) end,
-	desc = "Update installed packages",
+	desc = "Update installed packages. -l to use lockfile",
 })

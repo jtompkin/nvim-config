@@ -21,6 +21,16 @@ function lib.pack_add_on_event(event, specs, setup, opts)
 	)
 end
 
+---@param v any Value to start piping
+---@param fns (fun(v: any): any)[] List of functions to apply sequentially
+---@return any v Return value of last function in `functions`
+function lib.pipe(v, fns)
+	for _, f in ipairs(fns) do
+		v = f(v)
+	end
+	return v
+end
+
 ---@return boolean is_windows `true` if the current system is Windows
 function lib.is_windows() return vim.uv.os_uname().sysname == "Windows_NT" end
 

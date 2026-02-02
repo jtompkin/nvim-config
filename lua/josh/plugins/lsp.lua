@@ -1,9 +1,7 @@
 -- Optional: load nvim-cmp before this plugin for capabilities
-vim.pack.add(vim.tbl_map(function(pack) return Lib.from_gh(pack) end, {
-	"neovim/nvim-lspconfig",
-	"mason-org/mason.nvim",
-	"mason-org/mason-lspconfig.nvim",
-}))
+vim.pack.add(
+	vim.tbl_map(Lib.from_gh, { "neovim/nvim-lspconfig", "mason-org/mason.nvim", "mason-org/mason-lspconfig.nvim" })
+)
 require("mason").setup({})
 vim.lsp.config("lua_ls", {
 	on_init = function(client)
@@ -18,9 +16,7 @@ vim.lsp.config("lua_ls", {
 		end
 		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
 			runtime = {
-				version = "LuaJIT",
-				-- Tell the language server how to find Lua modules same way as Neovim
-				-- (see `:h lua-module-load`)
+				version = "LuaJIT", -- Tell the language server how to find Lua modules same way as Neovim (see `:h lua-module-load`)
 				path = {
 					"lua/?.lua",
 					"lua/?/init.lua",
@@ -34,9 +30,7 @@ vim.lsp.config("lua_ls", {
 			},
 		})
 	end,
-	settings = {
-		Lua = {},
-	},
+	settings = { Lua = {} },
 })
 vim.lsp.config("powershell_es", {
 	on_attach = function(client) client.server_capabilities.semanticTokensProvider = nil end,
@@ -52,9 +46,5 @@ vim.lsp.config("powershell_es", {
 		},
 	},
 })
-vim.lsp.enable("lua_ls")
-require("mason-lspconfig").setup({
-	automatic_enable = {
-		exclude = { "stylua" },
-	},
-})
+vim.lsp.enable("basedpyright")
+require("mason-lspconfig").setup({ automatic_enable = { exclude = { "stylua" } } })
