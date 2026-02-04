@@ -38,6 +38,7 @@ vim.lsp.config("powershell_es", {
 		powershell = {
 			codeFormatting = {
 				preset = "OTBS",
+				ignoreOneLineBlock = true,
 				whitespaceBeforeOpenBrace = true,
 				whitespaceAroundOperator = true,
 				whitespaceAroundPipe = true,

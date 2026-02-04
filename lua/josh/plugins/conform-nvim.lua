@@ -7,7 +7,7 @@ Lib.pack_add_on_event("FileType", {
 			lua = { "stylua" },
 			python = { "ruff_format" },
 			markdown = { "injected" },
-			ps1 = { lsp_format = "fallback" },
+			ps1 = { lsp_format = "first", "trim_whitespace", stop_after_first = false },
 			["_"] = { "trim_whitespace" },
 		},
 		format_on_save = {
