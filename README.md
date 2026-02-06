@@ -26,3 +26,9 @@ Some external tools are needed for all plugins to work.
 - C compiler - for several plugins probably
 - [tree-sitter-cli](https://github.com/tree-sitter/tree-sitter/blob/master/crates/cli/README.md) - for [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter/tree/main) (main branch)
 - cargo (nightly) - used to build blink.cmp
+
+## External libraries
+
+Some external libraries are included in this configuration.
+
+- [json.lua](https://github.com/rxi/json.lua) - for reading nvim-pack-lock.json (MIT license included in file header)
