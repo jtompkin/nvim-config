@@ -35,8 +35,8 @@ local function get_packages_fast()
 	if not Lib.json then
 		return {}, "JSON library not loaded in Lib"
 	end
-	local f, err = io.open("nvim-pack-lock.json", "r")
-	if not f then
+	local f, err = io.open(vim.fn.stdpath("config") .. "/nvim-pack-lock.json", "r")
+	if f == nil then
 		return {}, err
 	end
 	local pack_lock = Lib.json.decode(f:read("*a"))
@@ -44,34 +44,36 @@ local function get_packages_fast()
 	return pack_lock, nil
 end
 
-local list_dispatcher = { ---@type { [string]: fun(): nil }
+local pack_list_dispatcher = { ---@type { [string]: fun(): nil }
 	pretty = function() vim.pack.update(nil, { offline = true }) end,
 	inactive = function()
-		Lib.pipe(vim.pack.get(), {
-			function(packs)
-				return vim.tbl_filter(function(pack) return not pack.active end, packs)
-			end,
-			function(packs)
-				return vim.tbl_map(function(pack) return pack.spec.name end, packs)
-			end,
-			packs_to_window,
-		})
+		local packs = {}
+		for _, pack in ipairs(vim.pack.get()) do
+			if not pack.active then
+				packs[#packs + 1] = pack.spec.name
+			end
+		end
+		packs_to_window(packs)
 	end,
 	all = function()
 		local pack_lock, err = get_packages_fast()
-		if not err then
-			packs_to_window(vim.tbl_keys(pack_lock.plugins))
+		if err ~= nil then
+			vim.notify("Could not open package lockfile:\n" .. err, vim.log.levels.ERROR)
+			packs_to_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()))
 			return
 		end
-		vim.notify("Could not open package lockfile:\n" .. err, vim.log.levels.ERROR)
-		packs_to_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()))
+		packs_to_window(vim.tbl_keys(pack_lock.plugins))
 	end,
 }
 
 vim.api.nvim_create_user_command(
 	"PackList",
-	function(args) (list_dispatcher[args.fargs[1]] or list_dispatcher.all)() end,
-	{ complete = function() return vim.tbl_keys(list_dispatcher) end, nargs = "?", desc = "List installed packages" }
+	function(args) (pack_list_dispatcher[args.fargs[1]] or pack_list_dispatcher.all)() end,
+	{
+		complete = function() return vim.tbl_keys(pack_list_dispatcher) end,
+		nargs = "?",
+		desc = "List installed packages",
+	}
 )
 
 vim.api.nvim_create_user_command("PackDelete", function(args)
