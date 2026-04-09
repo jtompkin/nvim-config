@@ -8,27 +8,6 @@
 
 ---@alias error string? String describing error or `nil`
 
-local function packs_to_window(packs) ---@param packs string[]
-	if #packs == 0 then
-		vim.notify("No packages to show")
-		return
-	end
-	local buf = vim.api.nvim_create_buf(false, true)
-	vim.api.nvim_buf_set_lines(buf, 0, -1, false, packs)
-	vim.keymap.set("n", "q", vim.cmd.q, { buffer = buf })
-	local win = vim.api.nvim_open_win(buf, true, {
-		relative = "win",
-		row = 0,
-		col = 3,
-		height = #packs,
-		width = math.max(unpack(vim.tbl_map(function(pack) return #pack end, packs))) + 4 + math.floor(
-			math.log10(#packs)
-		),
-		style = "minimal",
-	})
-	vim.api.nvim_set_option_value("number", true, { scope = "local", win = win })
-end
-
 ---@return table val Decoded nvim-pack-lock.json file
 ---@return error err Any error that occurred while parsing file
 local function get_packages_fast()
@@ -53,16 +32,17 @@ local pack_list_dispatcher = { ---@type { [string]: fun(): nil }
 				packs[#packs + 1] = pack.spec.name
 			end
 		end
-		packs_to_window(packs)
+		Lib.show_list_in_window(packs, "No packages to show")
 	end,
 	all = function()
+		local msg = "No packages to show"
 		local pack_lock, err = get_packages_fast()
 		if err ~= nil then
 			vim.notify("Could not open package lockfile:\n" .. err, vim.log.levels.ERROR)
-			packs_to_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()))
+			Lib.show_list_in_window(vim.tbl_map(function(pack) return pack.spec.name end, vim.pack.get()), msg)
 			return
 		end
-		packs_to_window(vim.tbl_keys(pack_lock.plugins))
+		Lib.show_list_in_window(vim.tbl_keys(pack_lock.plugins), msg)
 	end,
 }
 

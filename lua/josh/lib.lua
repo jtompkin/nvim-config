@@ -1,6 +1,9 @@
 local lib = {}
 
-lib.json = require("lib.json")
+local ok, json = pcall(require, "lib.json")
+if ok then
+	lib.json = json
+end
 
 lib.pack_add_group = vim.api.nvim_create_augroup("pack-add", {})
 
@@ -29,6 +32,31 @@ function lib.pipe(v, fns)
 		v = f(v)
 	end
 	return v
+end
+
+---@param list string[]
+---@param message string? Message to send to vim.notify when list is empty
+function lib.show_list_in_window(list, message)
+	if #list == 0 then
+		if message then
+			vim.notify(message)
+		end
+		return
+	end
+	local buf = vim.api.nvim_create_buf(false, true)
+	vim.api.nvim_buf_set_lines(buf, 0, -1, false, list)
+	vim.keymap.set("n", "q", vim.cmd.q, { buffer = buf })
+	local win = vim.api.nvim_open_win(buf, true, {
+		relative = "win",
+		row = 0,
+		col = 3,
+		height = #list,
+		width = math.max(unpack(vim.tbl_map(function(pack) return #pack end, list))) + 4 + math.floor(
+			math.log10(#list)
+		),
+		style = "minimal",
+	})
+	vim.api.nvim_set_option_value("number", true, { scope = "local", win = win })
 end
 
 ---@return boolean is_windows `true` if the current system is Windows
