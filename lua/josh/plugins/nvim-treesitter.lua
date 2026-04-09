@@ -7,12 +7,10 @@ autocmd("PackChanged", {
 		end
 	end,
 })
-vim.pack.add({
-	{
-		src = Lib.from_gh("nvim-treesitter/nvim-treesitter"),
-		version = "main",
-	},
-})
+vim.pack.add({ {
+	src = Lib.from_gh("nvim-treesitter/nvim-treesitter"),
+	version = "main",
+} })
 local default_langs = {
 	"bash",
 	"c",
