@@ -1,20 +1,13 @@
 vim.api.nvim_create_autocmd("PackChanged", {
 	callback = function(ev)
-		local name, kind = ev.data.spec.name, ev.data.kind
-		if name == "blink.cmp" and (kind == "install" or kind == "update") then
-			local is_windows = Lib.is_windows()
-			if is_windows then
-				vim.system({ "rustup", "override", "set", "nightly-x86_64-pc-windows-gnu" }, { cwd = ev.data.path })
-					:wait()
-			end
-			vim.system({ "cargo", "build", "--release" }, { cwd = ev.data.path }):wait()
-			if is_windows then
-				vim.system({ "rustup", "override", "unset" }, { cwd = ev.data.path }):wait()
-			end
+		local kind = ev.data.kind
+		if ev.data.spec.name == "blink.cmp" and (kind == "install" or kind == "update") then
+			require("blink.cmp").build():wait(60000)
 		end
 	end,
 })
 vim.pack.add({
+	Lib.from_gh("saghen/blink.lib"),
 	Lib.from_gh("Saghen/blink.cmp"),
 	Lib.from_gh("rafamadriz/friendly-snippets"),
 })

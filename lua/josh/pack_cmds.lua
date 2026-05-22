@@ -22,8 +22,8 @@ local function get_packages_fast()
 	f:close()
 	return pack_lock, nil
 end
-
-local pack_list_dispatcher = { ---@type { [string]: fun(): nil }
+---@type table<string, fun(): nil>
+local pack_list_dispatcher = {
 	pretty = function() vim.pack.update(nil, { offline = true }) end,
 	inactive = function()
 		local packs = {}

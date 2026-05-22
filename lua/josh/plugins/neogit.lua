@@ -1,4 +1,4 @@
-vim.pack.add({ Lib.from_gh("NeogitOrg/neogit"), Lib.from_gh("nvim-lua/plenary.nvim") })
+vim.pack.add({ Lib.from_gh("esmuellert/codediff.nvim"), Lib.from_gh("NeogitOrg/neogit") })
 local neogit = require("neogit")
 neogit.setup({
 	mappings = {
