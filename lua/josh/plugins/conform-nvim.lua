@@ -9,11 +9,13 @@ Lib.pack_add_on_event("FileType", {
 }, function()
 	require("conform").setup({
 		formatters_by_ft = {
+			go = { "gofmt" },
+			just = { "just" },
 			lua = { "stylua", lsp_format = "never" },
-			python = { "ruff_format" },
 			markdown = { "injected" },
 			ps1 = { lsp_format = "first", "trim_whitespace", stop_after_first = false },
 			pyproject = { "tombi" },
+			python = { "ruff_format" },
 			["_"] = { "trim_whitespace" },
 		},
 		format_on_save = {
@@ -22,4 +24,17 @@ Lib.pack_add_on_event("FileType", {
 		},
 	})
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
-end, { pattern = { "lua", "python", "go", "gomod", "gowork", "gotmpl", "markdown", "ps1", "pyproject" } })
+end, {
+	pattern = {
+		"go",
+		"gomod",
+		"gotmpl",
+		"gowork",
+		"just",
+		"lua",
+		"markdown",
+		"ps1",
+		"pyproject",
+		"python",
+	},
+})
