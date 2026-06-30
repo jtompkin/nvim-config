@@ -29,6 +29,7 @@ local default_langs = {
 	"python",
 	"r",
 	"toml",
+	"v",
 	"vim",
 	"vimdoc",
 }

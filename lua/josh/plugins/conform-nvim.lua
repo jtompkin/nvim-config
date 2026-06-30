@@ -13,14 +13,14 @@ Lib.pack_add_on_event("FileType", {
 			just = { "just" },
 			lua = { "stylua", lsp_format = "never" },
 			markdown = { "injected" },
-			ps1 = { lsp_format = "first", "trim_whitespace", stop_after_first = false },
+			ps1 = { lsp_format = "first", "trim_whitespace" },
 			pyproject = { "tombi" },
 			python = { "ruff_format" },
+			v = { lsp_format = "prefer" },
 			["_"] = { "trim_whitespace" },
 		},
 		format_on_save = {
 			timeout_ms = 500,
-			lsp_format = "fallback",
 		},
 	})
 	vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
@@ -36,5 +36,6 @@ end, {
 		"ps1",
 		"pyproject",
 		"python",
+		"v",
 	},
 })

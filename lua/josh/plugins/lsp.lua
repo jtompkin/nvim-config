@@ -1,4 +1,4 @@
-vim.pack.add(vim.tbl_map(Lib.from_gh, { "neovim/nvim-lspconfig" }))
+vim.pack.add({ Lib.from_gh("neovim/nvim-lspconfig") })
 
 ---@param server string
 ---@param config vim.lsp.Config
@@ -11,7 +11,7 @@ config_and_enable("emmylua_ls", {
 	settings = {
 		emmylua = {
 			workspace = {
-				library = { vim.env.VIMRUNTIME, vim.fn.stdpath("data") .. "/site/pack/core/opt" },
+				library = { ".", vim.env.VIMRUNTIME, vim.fn.stdpath("data") .. "/site/pack/core/opt" },
 			},
 			runtime = {
 				version = "LuaJIT",

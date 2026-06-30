@@ -1,17 +1,11 @@
-vim.api.nvim_create_autocmd("PackChanged", {
-	callback = function(ev)
-		local kind = ev.data.kind
-		if ev.data.spec.name == "blink.cmp" and (kind == "install" or kind == "update") then
-			require("blink.cmp").build():wait(60000)
-		end
-	end,
-})
 vim.pack.add({
 	Lib.from_gh("saghen/blink.lib"),
 	Lib.from_gh("Saghen/blink.cmp"),
 	Lib.from_gh("rafamadriz/friendly-snippets"),
 })
-require("blink.cmp").setup({
+blink = require("blink.cmp")
+blink.build():pwait()
+blink.setup({
 	fuzzy = { implementation = "rust" },
 	keymap = {
 		preset = "default",
